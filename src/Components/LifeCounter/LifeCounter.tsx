@@ -155,7 +155,7 @@ const LifeCounter = ({ player, opponents }: LifeCounterProps) => {
     }
     // function to push updated life total to server
     const updateServer = (player: Player) => {
-      const url = "https://fenrir.whatbox.ca:12000/api2/"
+      const url = "https://fenrir.whatbox.ca:11247/api2/"
       const data = {index: player.index, lifeTotal: player.lifeTotal}
 
       fetch(url, {
