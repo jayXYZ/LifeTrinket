@@ -153,11 +153,24 @@ const LifeCounter = ({ player, opponents }: LifeCounterProps) => {
       clearTimeout(recentDifferenceTimerRef.current);
       return;
     }
+    // function to push updated life total to server
+    const updateServer = (player: Player) => {
+      const url = "http://fenrir.whatbox.ca:12000/api2/"
+      const data = {index: player.index, lifeTotal: player.lifeTotal}
+
+      fetch(url, {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json; charset=utf-8"
+      }})
+    }
 
     recentDifferenceTimerRef.current = setTimeout(() => {
       analytics.trackEvent('life_changed', {
         lifeChangedAmount: recentDifference,
       });
+      updateServer(player);
       setRecentDifference(0);
     }, RECENT_DIFFERENCE_TTL);
 
