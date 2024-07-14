@@ -132,8 +132,21 @@ const PlayerMenu = ({
     updatePlayer(updatedPlayer);
   };
 
+  const resetServer = () => {
+    const url = "http://fenrir.whatbox.ca:12000/api2/"
+    const data = {index: "reset", lifeTotal: player.lifeTotal}
+
+    fetch(url, {
+    method: "POST",
+    body: JSON.stringify(data),
+    headers: {
+      "Content-Type": "application/json; charset=utf-8"
+    }})
+  }
+
   const handleResetGame = () => {
     resetCurrentGame();
+    resetServer();
     setShowPlayerMenu(false);
 
     setPlaying(false);
