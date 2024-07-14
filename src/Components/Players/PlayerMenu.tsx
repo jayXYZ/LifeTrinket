@@ -133,12 +133,12 @@ const PlayerMenu = ({
   };
 
   const resetServer = () => {
-    const url = "http://fenrir.whatbox.ca:12000/api2/"
-    const data = {index: "reset", lifeTotal: player.lifeTotal}
-
+    const url = "http://fenrir.whatbox.ca:12000/reset/"
+    // const data = {index: "reset"}
+    console.log("reset!")
     fetch(url, {
     method: "POST",
-    body: JSON.stringify(data),
+    // body: JSON.stringify(data),
     headers: {
       "Content-Type": "application/json; charset=utf-8"
     }})
